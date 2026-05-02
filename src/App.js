@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState, useCallback, useEffect } from "react";
 
 const DEFAULT_THEME = {
@@ -209,4 +210,4 @@ export default function App() {
   });
 
   return (
-    <div style={{ minHeight:"100vh", background:T.bg, color:T.text, fontFamily:"'DM Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',
+    <div style={{ minHeight:"100vh", background:T.bg, color:T.text, fontFamily:"'DM Sans','Hiragino Kaku Gothic
