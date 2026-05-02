@@ -124,7 +124,7 @@ export default function App() {
     if (!q) setDest(query);
     setSrchLoading(true); setSrchResult(null); setSrchError(null); setPanel(null);
     const locHint = geo
-      ? ユーザーの現在地: 緯度${geo.lat.toFixed(4)}, 経度${geo.lng.toFixed(4)}付近。同一企業名・同一チェーン複数拠点は現在地に近い順でソートしてください。
+      ? ("ユーザーの現在地: 緯度" + geo.lat.toFixed(4) + ", 経度" + geo.lng.toFixed(4) + "付近。同一企業名・同一チェーン複数拠点は現在地に近い順でソートしてください。")
       : "現在地不明。日本の都市部を想定してください。";
     try {
       const parsed = await callClaude(CAFE_SYSTEM(locHint), `目的地: ${query}`);
@@ -142,7 +142,7 @@ export default function App() {
     try {
       let g = geo;
       if (!g) g = await getGeo();
-      const parsed = await callClaude(NEARBY_SYSTEM(g.lat, g.lng), `現在地周辺の格安カフェを教えてください。緯度:${g.lat.toFixed(5)}, 経度:${g.lng.toFixed(5)}`);
+      const parsed = await callClaude(NEARBY_SYSTEM(g.lat, g.lng), ("現在地周辺の格安カフェを教えてください。緯度:" + g.lat.toFixed(5) + ", 経度:" + g.lng.toFixed(5)));
       setNearResult(parsed);
     } catch (e) {
       setNearError(e.message === "denied" ? "位置情報の取得が許可されていません。設定からGPSを許可してください。" : "情報を取得できませんでした。再度お試しください。");
@@ -210,4 +210,4 @@ export default function App() {
   });
 
   return (
-    <div style={{ minHeight:"100vh", background:T.bg, color:T.text, fontFamily:"'DM Sans','Hiragino Kaku Gothic
+    <div style={{ minHeight:"100vh", background:T.bg, color:T.text, fontFamily:"'DM Sans','Hi
